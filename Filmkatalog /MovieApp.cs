@@ -81,21 +81,55 @@ public class MovieApp
 
     private void AddMoviePrompt()
     {
-        
+        Console.WriteLine("Write the title of the movie.");
+        string title = Console.ReadLine();
+        Console.WriteLine("Write the genre of the movie.");
+        string genre = Console.ReadLine();
+        Console.WriteLine("Write the lenght of the movie in minutes.");
+
+        if (int.TryParse(Console.ReadLine(), out int length))
+        {
+            MovieCatalog.AddMovie(new Movie(title, genre, length));
+        }
+        else
+        {
+            Console.WriteLine("Invalid input. Write a valid number for minutes.");
+        }
     }
 
     private void FindMovieOverLengthPrompt()
     {
-        
+        Console.WriteLine("Enter the minimum length (in minutes) of the movie you want to find.");
+        if (int.TryParse(Console.ReadLine(), out var minLength))
+        {
+            MovieCatalog.FindMovieOverLength(minLength);
+        }
+        else
+        {
+            Console.WriteLine("Invalid input. Write a valid number for minutes.");
+        }
     }
 
     private void SearchMoviesByGenrePrompt()
     {
-        
+        Console.WriteLine("Write the genre you want to search for");
+        string genre = Console.ReadLine();
+        MovieCatalog.FindMovieByGenre(genre);
     }
 
     private void SetMovieRatingPrompt()
     {
-        
+        Console.WriteLine("Write the title of the movie you want to rate.");
+        string title = Console.ReadLine() ?? String.Empty;
+        Console.Write("Write the rating (1-10):");
+
+        if (int.TryParse(Console.ReadLine(), out int rating))
+        {
+            MovieCatalog.SetMovieRating(title, rating);
+        }
+        else
+        {
+            Console.WriteLine("Invalid input. Please write a number between 1 and 10.");
+        }
     }
 }

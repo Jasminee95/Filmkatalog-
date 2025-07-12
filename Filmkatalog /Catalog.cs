@@ -20,7 +20,7 @@ public class Catalog
             else
             {
                 Movies.Add(movie);
-                Console.WriteLine($"The movie with the title {movie.Title} added!");
+                Console.WriteLine($"The movie with the title {movie.Title} has been added!");
             }
         }
         else
